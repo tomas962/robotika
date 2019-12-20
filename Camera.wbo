@@ -1,0 +1,28 @@
+#VRML_OBJ R2020a utf8
+Camera {
+  translation 0 0.0915 -0.04
+  rotation 0 0 -1 0
+  children [
+    Transform {
+      translation 0 0 0.015
+      rotation 1 0 0 1.57
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.03
+            radius 0.01
+          }
+        }
+      ]
+    }
+  ]
+  fieldOfView 1.047
+  width 80
+  height 60
+  antiAliasing TRUE
+  noise 0.04
+}
