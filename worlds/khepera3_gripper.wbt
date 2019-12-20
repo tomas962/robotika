@@ -21,10 +21,57 @@ WorldInfo {
     }
   ]
 }
+DEF BLUE_BOX Solid {
+  translation 0.2 0.02 0.27
+  rotation 0 1 0 0.31
+  scale 0.3 0.3 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.519341125
+        metalness 0
+      }
+      geometry DEF BOX1 Box {
+        size 0.2 0.1 0.1
+      }
+    }
+  ]
+  name "blue box"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX1
+  }
+}
 Viewpoint {
-  orientation 0.010375173565955154 0.9881546100079622 0.15311049112810118 3.390766842814564
-  position -0.3619521972641332 0.35555303289553575 -1.118924537226051
+  orientation 0.9859492592716788 -0.007091475376395101 0.1668944849856161 6.018900634924349
+  position 0.9852984649154175 0.3108692433081516 0.8207119874573647
   follow "Khepera III"
+}
+DEF GREEN_BOX Solid {
+  translation -0.05 0.02 -0.25
+  scale 0.3 0.3 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
 }
 TexturedBackground {
 }
@@ -33,42 +80,13 @@ TexturedBackgroundLight {
 RectangleArena {
   floorSize 2 2
 }
-WoodenBox {
-  translation -0.2 0.05 0.683174
-  rotation 0 1 0 0.5
-  size 0.1 0.1 0.1
-}
-WoodenBox {
-  translation -0.75 0.05 -0.35
-  rotation 0 1 0 4.96782
-  name "wooden box(1)"
-  size 0.1 0.1 0.1
-}
-WoodenBox {
-  translation 0.5 0.05 0.35471
-  rotation 0 1 0 5.36782
-  name "wooden box(2)"
-  size 0.1 0.1 0.1
-}
-WoodenBox {
-  translation -0.21 0.05 -0.41
-  rotation 0 1 0 5.636164372494129
-  name "wooden box(3)"
-  size 0.1 0.1 0.1
-}
-WoodenBox {
-  translation -0.65 0.05 0.66
-  rotation 0 1 0 5.36782
-  name "wooden box(4)"
-  size 0.1 0.1 0.1
-}
 Khepera3 {
   controller "khepera3_gripper"
   wheelMaterial "wheel"
   bodyMaterial "body"
   turretSlot [
     Camera {
-      translation 0 0.0915 -0.04
+      translation 0 0.0215 -0.09
       rotation 0 0 -1 0
       children [
         Transform {
@@ -116,4 +134,65 @@ DEF CYLINDER_LOAD Solid {
   boundingObject USE CYLINDER_SHAPE
   physics Physics {
   }
+}
+DEF RED_BOX Solid {
+  translation 0.89 0.1 0.085
+  scale 0.3 0.3 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 0.16827074099999995
+        metalness 0
+      }
+      geometry DEF BOX3 Box {
+        size 0.2 0.1 0.08
+      }
+    }
+  ]
+  name "red box"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX3
+  }
+  physics Physics {
+  }
+}
+ConveyorBelt {
+  translation 0.73 0 0.07
+  rotation 0 1 0 3.141592
+  size 0.4 0.05 0.1
+  appearance CorrugatedMetal {
+    textureTransform TextureTransform {
+      scale 6 3.1
+    }
+  }
+  borderHeight 0
+  speed 0.2
+  textureAnimation 0.016
+}
+PlasticCrate {
+  translation -0.214445 0 -0.219951
+  rotation 0.883286548030619 0.00016147889613498209 0.46883349708901895 -0.00026905677898540054
+  name "plastic crate(3)"
+  size 0.2 0.07 0.2
+  mass 1
+}
+PlasticCrate {
+  translation -0.214444 0 0.0200466
+  rotation 0.883286548030619 0.00016147889613498209 0.46883349708901895 -0.00026905677898540054
+  name "plastic crate(1)"
+  size 0.2 0.07 0.2
+  color 0 0.5 0
+  mass 1
+}
+PlasticCrate {
+  translation -0.214444 0 0.270047
+  rotation 0.883286548030619 0.00016147889613498209 0.46883349708901895 -0.00026905677898540054
+  name "plastic crate(2)"
+  size 0.2 0.07 0.2
+  color 0 0 0.5
+  mass 1
 }

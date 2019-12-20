@@ -1,0 +1,15 @@
+#VRML_OBJ R2020a utf8
+ConveyorBelt {
+  hidden translation_1 0 0.4499921520061439 0
+  translation 3.18 0 1.05
+  rotation 0 1 0 3.141592
+  size 2 0.6 0.7
+  appearance CorrugatedMetal {
+    textureTransform TextureTransform {
+      scale 6 3.1
+    }
+  }
+  borderHeight 0
+  speed 0.2
+  textureAnimation 0.016
+}

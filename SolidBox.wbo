@@ -1,0 +1,8 @@
+#VRML_OBJ R2020a utf8
+SolidBox {
+  translation 1.015 0.45 0.0323
+  name "box(5)"
+  size 0.8 0.91 0.4
+  appearance GalvanizedMetal {
+  }
+}

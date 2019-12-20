@@ -1,0 +1,332 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  info [
+    "The model of the Khepera III robot equipped with its gripper"
+  ]
+  title "Khepera III"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "wheel"
+      coulombFriction [
+        0.45
+      ]
+    }
+    ContactProperties {
+      material1 "body"
+      coulombFriction [
+        0.1
+      ]
+      softCFM 0.0001
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.05231271124388434 0.9827661013059161 0.17729684251639583 4.6607068972527825
+  position 0.033302664328651685 0.17292512891953493 -0.12914340379123884
+  follow "Khepera III"
+}
+DEF GREEN_BOX Solid {
+  translation 0.72 0.077489 0.245
+  scale 0.4 0.4 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
+  physics Physics {
+  }
+}
+DEF GREEN_BOX Solid {
+  translation 0.72 0.077489 -0.075
+  scale 0.4 0.4 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box(6)"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
+  physics Physics {
+  }
+}
+DEF GREEN_BOX Solid {
+  translation 0.72 0.077489 0.045
+  scale 0.4 0.4 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box(4)"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
+  physics Physics {
+  }
+}
+DEF GREEN_BOX Solid {
+  translation 0.72 0.077489 0.195
+  scale 0.4 0.4 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box(1)"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
+  physics Physics {
+  }
+}
+DEF GREEN_BOX Solid {
+  translation 0.72 0.077489 0.095
+  scale 0.4 0.4 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box(3)"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
+  physics Physics {
+  }
+}
+DEF GREEN_BOX Solid {
+  translation 0.72 0.077489 0.145
+  scale 0.4 0.4 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box(2)"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
+  physics Physics {
+  }
+}
+DEF GREEN_BOX Solid {
+  translation 0.72 0.077489 -0.015
+  scale 0.4 0.4 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box(5)"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
+  physics Physics {
+  }
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0.31 0 0
+  floorSize 2 2
+}
+Khepera3 {
+  translation 0.52 -0.00251136 -0.12
+  rotation 8.14923e-19 1 -8.19952e-19 -1.5707953071795862
+  controller "khepera3_gripper"
+  wheelMaterial "wheel"
+  bodyMaterial "body"
+  turretSlot [
+    Camera {
+      translation 0 0.0815 -0.09
+      children [
+        Transform {
+          translation 0 0 0.015
+          rotation 1 0 0 1.57
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.01
+              }
+            }
+          ]
+        }
+      ]
+      fieldOfView 1.047
+      width 80
+      height 60
+      antiAliasing TRUE
+      noise 0.04
+    }
+    DEF BASE Khepera3_Gripper {
+    }
+  ]
+}
+Khepera3 {
+  translation 1.19 -0.00251136 -0.125
+  rotation -8.19952e-19 1 -8.14923e-19 1.5708
+  name "Khepera III(1)"
+  controller "khepera3_pusher"
+  wheelMaterial "wheel"
+  bodyMaterial "body"
+  turretSlot [
+    Camera {
+      translation 0 0.0215 -0.09
+      rotation 0 0 -1 0
+      children [
+        Transform {
+          translation 0 0 0.015
+          rotation 1 0 0 1.57
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.01
+              }
+            }
+          ]
+        }
+      ]
+      fieldOfView 1.047
+      width 80
+      height 60
+      antiAliasing TRUE
+      noise 0.04
+    }
+    DEF BASE Khepera3_Gripper {
+    }
+  ]
+}
+Wall {
+  translation 0.745 0 -0.16
+  size 0.05 0.2 0.04
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 2 1
+    }
+  }
+}
+ConveyorBelt {
+  translation 0.72 0 0.07
+  rotation 0 1 0 1.570795
+  size 0.4 0.05 0.1
+  appearance CorrugatedMetal {
+    textureTransform TextureTransform {
+      scale 6 3.1
+    }
+  }
+  borderHeight 0
+  speed 0.2
+  textureAnimation 0.016
+}
+PlasticCrate {
+  translation -0.21444518460577514 -0.001490336943711451 -0.2199507616525674
+  rotation 0.999975258075715 -6.7101824439385e-05 -0.007034112150977548 0.014426188673741347
+  name "plastic crate(3)"
+  size 0.2 0.07 0.2
+  mass 1
+}
+PlasticCrate {
+  translation -0.21444418460577513 -0.001490336943711451 0.02004683834743259
+  rotation 0.999975258075715 -6.710182443938501e-05 -0.0070341121509776275 0.014426188673741347
+  name "plastic crate(1)"
+  size 0.2 0.07 0.2
+  color 0 0.5 0
+  mass 1
+}
+PlasticCrate {
+  translation -0.21444418460577513 -0.0014903369437114476 0.27004723834743255
+  rotation 0.999975258075715 -6.7101824439385e-05 -0.007034112150977548 0.014426188673741347
+  name "plastic crate(2)"
+  size 0.2 0.07 0.2
+  color 0 0 0.5
+  mass 1
+}

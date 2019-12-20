@@ -1,0 +1,26 @@
+#VRML_OBJ R2020a utf8
+DEF GREEN_BOX Solid {
+  translation 0.74 0.097489 0.195
+  scale 0.3 0.3 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        roughness 0.2189099510000001
+        metalness 0
+      }
+      geometry DEF BOX0 Box {
+        size 0.23 0.1 0.1
+      }
+    }
+  ]
+  name "green box"
+  boundingObject Shape {
+    appearance PBRAppearance {
+      metalness 0
+    }
+    geometry USE BOX0
+  }
+  physics Physics {
+  }
+}

@@ -18,6 +18,7 @@
  * Description:  A controller moving the khepera III and its gripper.
  */
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -105,42 +106,6 @@ void step(double seconds) {
   }
 }
 
-void braitenberg() {
-  while (wb_robot_step(time_step) != -1) {  // Run simulation
-    int i, j;
-    double speed[2];
-    double sensors_value[num_sensors];
-
-    for (i = 0; i < num_sensors; i++)
-      sensors_value[i] = wb_distance_sensor_get_value(sensors[i]);
-
-    /*
-     * The Braitenberg algorithm is really simple, it simply computes the
-     * speed of each wheel by summing the value of each sensor multiplied by
-     * its corresponding weight. That is why each sensor must have a weight
-     * for each wheel.
-     */
-    for (i = 0; i < 2; i++) {
-      speed[i] = 0.0;
-
-      for (j = 0; j < num_sensors; j++) {
-        /*
-         * We need to recenter the value of the sensor to be able to get
-         * negative values too. This will allow the wheels to go
-         * backward too.
-         */
-        speed[i] += matrix[j][i] * (1.0 - (sensors_value[j] / range));
-      }
-
-      speed[i] = BOUND(speed[i], -max_speed, max_speed);
-    }
-
-    /* Set the motor speeds */
-    wb_motor_set_velocity(left_motor, speed[0]);
-    wb_motor_set_velocity(right_motor, speed[1]);
-  }
-}
-
 void moveArms(double position) {
   wb_motor_set_velocity(gripper_motors[0], GRIPPER_MOTOR_MAX_SPEED);
   wb_motor_set_position(gripper_motors[0], position);
@@ -169,105 +134,24 @@ void stop(double seconds) {
   step(seconds);
 }
 
-enum BLOB_TYPE get_image_color(WbDeviceTag camera, int width, int height){
-    const unsigned char *image = NULL;
-    image = wb_camera_get_image(camera);
-
-    enum BLOB_TYPE current_blob;
-    int red = 0;
-    int blue = 0;
-    int green = 0;
-    for (int i = width / 3; i < 2 * width / 3; i++) {
-        for (int j = height / 2; j < 3 * height / 4; j++) {
-            red += wb_camera_image_get_red(image, width, i, j);
-            blue += wb_camera_image_get_blue(image, width, i, j);
-            green += wb_camera_image_get_green(image, width, i, j);
-        }
-    }
-
-    if ((red > 3 * green) && (red > 3 * blue))
-        current_blob = RED;
-      else if ((green > 3 * red) && (green > 3 * blue))
-        current_blob = GREEN;
-      else if ((blue > 3 * red) && (blue > 3 * green))
-        current_blob = BLUE;
-      else
-        current_blob = NONE;
-
-    return current_blob;
-}
-
 int main() {
-  WbDeviceTag camera, left_motor, right_motor;
-  int width, height;
-  int pause_counter = 0;
-  int left_speed, right_speed;
-  int i, j;
-  int red, blue, green;
-  const char *color_names[3] = {"red", "green", "blue"};
-  const char *ansi_colors[3] = {ANSI_COLOR_RED, ANSI_COLOR_GREEN, ANSI_COLOR_BLUE};
-  const char *filenames[3] = {"red_blob.png", "green_blob.png", "blue_blob.png"};
-    initialize();
+  initialize();
 
-
-  /* Get the camera device, enable it, and store its width and height */
-  camera = wb_robot_get_device("camera");
-  wb_camera_enable(camera, TIME_STEP);
-  width = wb_camera_get_width(camera);
-  height = wb_camera_get_height(camera);
-
-    /* Get the new camera values */
-    while (wb_robot_step(TIME_STEP) != -1)
-    {  
-       enum BLOB_TYPE color = get_image_color(camera, width, height);
-
-       switch (color)
-       {
-        case RED:
-           printf("RED\n");
-           break;
-        case GREEN:
-           printf("GREEN\n");
-           break;
-        case BLUE:
-           printf("BLUE\n");
-           break;
-        case NONE:
-           printf("NONE\n");
-           break;
-        default:
-           break;
-       }
-    }
+    
   stop(1.0);
-  moveForwards(12.8);
-  moveArms(-3.0);
+
+  moveArms(-2.7);
+
+  moveFingers(0.6);
   step(1.0);
-  stop(1.0);
-  moveFingers(0.42);
-  step(1.0);
-  moveArms(0.0);
-  moveForwards(-12.8);
-  moveArms(0.0);
-  step(1.0);
-  stop(1.0);
-  turn(-2.4);
-  step(0.5);
-  moveForwards(12.8);
-  step(0.6);
-  stop(0.25);
-  moveArms(-1.6);
-  step(1.5);
-  moveFingers(0.0);
-  step(1.0);
-  moveArms(0.0);
-  moveFingers(0.0);
-  step(1.0);
-  moveForwards(-12.8);
-  step(1.0);
-  turn(-10.7);
-  step(1.0);
-  braitenberg();
+  
+  while (true)
+  {
+    moveForwards(3.5);
+    step(3.0);
+    moveForwards(-3.5);
+    step(3.0);
+  }
   wb_robot_cleanup();
   return 0;
 }
