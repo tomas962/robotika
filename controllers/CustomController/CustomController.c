@@ -26,6 +26,7 @@
 #include <webots/robot.h>
 #include <webots/camera.h>
 #include <webots/gps.h>
+#include <webots/inertial_unit.h>
 
 
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -170,14 +171,48 @@ void moveFingers(double position) {
   wb_motor_set_position(gripper_motors[1], position);
   wb_motor_set_position(gripper_motors[2], -position);
 }
-void moveForwards(double speed,double distance) {
-  
+void moveForwards(double speed) {
   wb_motor_set_velocity(left_motor, speed);
   wb_motor_set_velocity(right_motor, speed);
-  wb_motor_set_position(left_motor,distance);
-  wb_motor_set_position(right_motor,distance);
-  
+}
 
+void rotateToHeading(WbDeviceTag tag_IMU,double speed,double heading_rad){
+  wb_inertial_unit_enable(tag_IMU,10);
+  step(0.020);
+  const double error=1e-3;
+  double sauce_rad=*(wb_inertial_unit_get_roll_pitch_yaw(tag_IMU)+2);
+  bool rotate_clockwise;
+  bool sauceMoreThanHeading=sauce_rad>heading_rad;
+  if(sauceMoreThanHeading){
+    rotate_clockwise=fabs(sauce_rad-heading_rad)<fabs(sauce_rad-(heading_rad+2*M_PI));
+  }else{
+    rotate_clockwise=fabs(sauce_rad-heading_rad)>fabs(sauce_rad-(heading_rad-2*M_PI));
+  }
+  
+  printf("rotateToHeading: sauceMoreThanHeading %d\n",sauceMoreThanHeading);
+  if(rotate_clockwise){
+    wb_motor_set_velocity(left_motor, speed);
+    wb_motor_set_velocity(right_motor, -speed);
+  }else{
+    wb_motor_set_velocity(left_motor, speed);
+    wb_motor_set_velocity(right_motor, -speed);
+  }
+  
+  printf("rotateToHeading: rotate_clockwise %d\n",rotate_clockwise);
+  printf("rotateToHeading: sauce_rad %f\n",sauce_rad);
+  printf("rotateToHeading: abs %f\n",fabs(sauce_rad-heading_rad));
+  
+  while(fmin(fabs(sauce_rad-heading_rad),fabs(sauce_rad-(heading_rad-2*M_PI)))>error){
+     wb_robot_step(time_step);
+     sauce_rad=*(wb_inertial_unit_get_roll_pitch_yaw(tag_IMU)+2);
+     
+    printf("rotateToHeading: sauce_rad %f\n",sauce_rad);
+    printf("rotateToHeading: abs %f\n",fabs(sauce_rad-heading_rad));
+  }
+  wb_motor_set_velocity(left_motor, 0.0);
+  wb_motor_set_velocity(right_motor, 0.0);
+  wb_inertial_unit_disable(tag_IMU);
+  step(0.0);
 }
 
 void turn(double speed) {
@@ -192,7 +227,7 @@ void stop(double seconds) {
 }
 
 int main() {
-  WbDeviceTag camera,GPS, left_motor, right_motor;
+  WbDeviceTag camera,IMU, left_motor, right_motor;
   int sampling_period=10;
   int width, height;
   int pause_counter = 0;
@@ -204,8 +239,7 @@ int main() {
   const char *filenames[3] = {"red_blob.png", "green_blob.png", "blue_blob.png"};
   enum BLOB_TYPE current_blob;
   initialize();
-  GPS=wb_robot_get_device("gps");
-  wb_gps_enable(GPS,sampling_period);
+  IMU=wb_robot_get_device("IMU");
   camera = wb_robot_get_device("camera");
   wb_camera_enable(camera, TIME_STEP);
   width = wb_camera_get_width(camera);
@@ -221,15 +255,7 @@ int main() {
     printf("%.100s\n", image);
   }//*/
   step(1.0);
-  
-  const double* gps;
-  step(1.0);
-  gps=wb_gps_get_values(GPS);
-  printf("Gps_pos: x:%f,y:%f\n",gps[0],gps[1]);
-  moveForwards(2.0f,10);
-  step(1.0);
-  gps=wb_gps_get_values(GPS);
-  printf("Gps_pos: x:%f,y:%f\n",gps[0],gps[1]);
-  wb_robot_cleanup();
+  printf("Moving to heading 180\n");
+  rotateToHeading(IMU,2.4,M_PI);
   return 0;
 }

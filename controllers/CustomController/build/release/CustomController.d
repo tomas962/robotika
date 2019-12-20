@@ -6,4 +6,5 @@ build/release/CustomController.o: CustomController.c \
  C:\Users\kutko\AppData\Local\Programs\Webots/include/controller/c/webots/nodes.h \
  C:\Users\kutko\AppData\Local\Programs\Webots/include/controller/c/webots/camera.h \
  C:\Users\kutko\AppData\Local\Programs\Webots/include/controller/c/webots/camera_recognition_object.h \
- C:\Users\kutko\AppData\Local\Programs\Webots/include/controller/c/webots/gps.h
+ C:\Users\kutko\AppData\Local\Programs\Webots/include/controller/c/webots/gps.h \
+ C:\Users\kutko\AppData\Local\Programs\Webots/include/controller/c/webots/inertial_unit.h
