@@ -1,4 +1,4 @@
-#VRML_SIM R2020a utf8
+#VRML_SIM R2019b utf8
 WorldInfo {
   info [
     "The model of the Khepera III robot equipped with its gripper"
@@ -22,215 +22,20 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.2092657757829914 -0.9262815701450583 -0.3133852068869053 2.202221642040233
-  position -4.1625866364523425 3.2462072615998037 -4.101985681552779
-  follow "Khepera III"
-}
-DEF GREEN_BOX Solid {
-  translation 0.7201220940309465 0.05995331132959414 0.11977596837443048
-  rotation -0.7720747643669716 -0.6355122238423149 0.004977105050162083 -0.0015733303602309212
-  scale 0.4 0.4 0.4
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 1 0
-        roughness 0.2189099510000001
-        metalness 0
-      }
-      geometry DEF BOX0 Box {
-        size 0.23 0.1 0.1
-      }
-    }
-  ]
-  name "green box"
-  boundingObject Shape {
-    appearance PBRAppearance {
-      metalness 0
-    }
-    geometry USE BOX0
-  }
-  physics Physics {
-  }
-}
-DEF GREEN_BOX Solid {
-  translation 0.6764827306487661 0.0599980964684813 -0.12001219723296092
-  rotation 0.17024647980271426 0.976136719033367 -0.13480816692455083 0.0006352260031906605
-  scale 0.4 0.4 0.4
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 1 0
-        roughness 0.2189099510000001
-        metalness 0
-      }
-      geometry DEF BOX0 Box {
-        size 0.23 0.1 0.1
-      }
-    }
-  ]
-  name "green box(6)"
-  boundingObject Shape {
-    appearance PBRAppearance {
-      metalness 0
-    }
-    geometry USE BOX0
-  }
-  physics Physics {
-    density -1
-    mass 0.1
-  }
-}
-DEF GREEN_BOX Solid {
-  translation 0.7197833928770062 0.059989365827276014 -0.04011228422787724
-  rotation 0.20951959391862718 0.9762503703356035 0.05510675261499646 0.0014275219448001387
-  scale 0.4 0.4 0.4
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 1 0
-        roughness 0.2189099510000001
-        metalness 0
-      }
-      geometry DEF BOX0 Box {
-        size 0.23 0.1 0.1
-      }
-    }
-  ]
-  name "green box(4)"
-  boundingObject Shape {
-    appearance PBRAppearance {
-      metalness 0
-    }
-    geometry USE BOX0
-  }
-  physics Physics {
-    density -1
-    mass 0.1
-  }
-}
-DEF GREEN_BOX Solid {
-  translation 0.7200794860479856 0.059998165106700654 0.07979522785047045
-  rotation -0.7021667439360993 -0.710467038053499 0.04688764815667762 -0.0014765809289608595
-  scale 0.4 0.4 0.4
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 1 0 0
-        roughness 0.2189099510000001
-        metalness 0
-      }
-      geometry DEF BOX0 Box {
-        size 0.23 0.1 0.1
-      }
-    }
-  ]
-  name "green box(1)"
-  boundingObject Shape {
-    appearance PBRAppearance {
-      metalness 0
-    }
-    geometry USE BOX0
-  }
-  physics Physics {
-    density -1
-    mass 0.1
-  }
-}
-DEF GREEN_BOX Solid {
-  translation 0.7200678756437839 0.05998534203472843 -0.00014429162392044258
-  rotation 0.3608426286833864 0.9316891499254892 0.041808195799183476 0.0013606375942029777
-  scale 0.4 0.4 0.4
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 1 0 0
-        roughness 0.2189099510000001
-        metalness 0
-      }
-      geometry DEF BOX0 Box {
-        size 0.23 0.1 0.1
-      }
-    }
-  ]
-  name "green box(3)"
-  boundingObject Shape {
-    appearance PBRAppearance {
-      metalness 0
-    }
-    geometry USE BOX0
-  }
-  physics Physics {
-    density -1
-    mass 0.1
-  }
-}
-DEF GREEN_BOX Solid {
-  translation 0.7201056216756617 0.05999815479141784 0.039825260780617405
-  rotation -0.5640743915626035 -0.8248984152642299 -0.03691456728502993 -0.0013845358999452233
-  scale 0.4 0.4 0.4
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 1
-        roughness 0.2189099510000001
-        metalness 0
-      }
-      geometry DEF BOX0 Box {
-        size 0.23 0.1 0.1
-      }
-    }
-  ]
-  name "green box(2)"
-  boundingObject Shape {
-    appearance PBRAppearance {
-      metalness 0
-    }
-    geometry USE BOX0
-  }
-  physics Physics {
-    density -1
-    mass 0.1
-  }
-}
-DEF GREEN_BOX Solid {
-  translation 0.7082922533771397 0.059995399325076845 -0.08007491318519291
-  rotation 0.15638250105005166 0.9806797899853148 -0.11752303127340324 0.00134862050119398
-  scale 0.4 0.4 0.4
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 1
-        roughness 0.2189099510000001
-        metalness 0
-      }
-      geometry DEF BOX0 Box {
-        size 0.23 0.1 0.1
-      }
-    }
-  ]
-  name "green box(5)"
-  boundingObject Shape {
-    appearance PBRAppearance {
-      metalness 0
-    }
-    geometry USE BOX0
-  }
-  physics Physics {
-    density -1
-    mass 0.1
-  }
+  orientation -0.17301992101650523 -0.9637363044097772 -0.20316604660726983 2.7042803142080762
+  position -3.9593783945831147 4.241955921131853 -8.94525449132992
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  translation 0.31 0 0
-  floorSize 8 9
+  translation -0.97 0 0
+  floorSize 3 9
 }
 DEF GREEN_BOX Solid {
-  translation -0.999942 0.196215 -4.16797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.999951510238648 0.1625882178314848 -4.105720946885591
+  rotation 8.384317687582726e-05 0.9999999931160976 8.208609277603113e-05 1.5708265015824765
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -255,8 +60,8 @@ DEF GREEN_BOX Solid {
   }
 }
 DEF GREEN_BOX Solid {
-  translation -0.999928 0.195658 -3.71797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.9999359138054363 0.1625133693034241 -3.6557206919870193
+  rotation 8.382367639030646e-05 0.9999999931161313 8.210559548515698e-05 1.5708265015587646
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -281,8 +86,8 @@ DEF GREEN_BOX Solid {
   }
 }
 DEF GREEN_BOX Solid {
-  translation -0.999915 0.195021 -3.19797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.9999211430224654 0.16242912838456416 -3.135717128587671
+  rotation 8.373013318163477e-05 0.9999999931274971 8.206260201659558e-05 1.5708265609261367
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -307,8 +112,8 @@ DEF GREEN_BOX Solid {
   }
 }
 DEF GREEN_BOX Solid {
-  translation -0.999899 0.194417 -2.70797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.9999031508373782 0.16234805389668897 -2.6457122849165415
+  rotation 8.36389987076893e-05 0.9999999931384393 8.202218644560092e-05 1.5708263261242437
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -333,8 +138,8 @@ DEF GREEN_BOX Solid {
   }
 }
 DEF GREEN_BOX Solid {
-  translation -0.999888 0.193842 -2.23797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.9998905660591322 0.16227010967885178 -2.175712060102222
+  rotation 8.36186548550441e-05 0.9999999931384718 8.204253075371712e-05 1.5708263260986628
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -359,8 +164,8 @@ DEF GREEN_BOX Solid {
   }
 }
 DEF GREEN_BOX Solid {
-  translation -0.999851 0.192005 -0.73797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.9998485082549943 0.1620213503652625 -0.675711341767699
+  rotation 8.355372770097689e-05 0.9999999931385699 8.210745937207097e-05 1.5708263260170263
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -385,8 +190,8 @@ DEF GREEN_BOX Solid {
   }
 }
 DEF GREEN_BOX Solid {
-  translation -0.999825 0.190791 0.25203
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.999822 0.161851 0.344311
+  rotation 8.363841119376841e-05 0.9999999931177795 8.227427949958518e-05 1.5708257050766208
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -411,8 +216,8 @@ DEF GREEN_BOX Solid {
   }
 }
 DEF GREEN_BOX Solid {
-  translation -0.999863 0.192641 -1.25797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.9998622616265622 0.16210758641585785 -1.1957115904227493
+  rotation 8.357623577818251e-05 0.9999999931385368 8.20849507922244e-05 1.5708263260453272
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -437,8 +242,8 @@ DEF GREEN_BOX Solid {
   }
 }
 DEF GREEN_BOX Solid {
-  translation -0.999872 0.193238 -1.74797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.9998729138405875 0.1621888458819474 -1.685711823706181
+  rotation 8.359744532515736e-05 0.999999993138505 8.206374078563321e-05 1.5708263260719957
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -463,29 +268,29 @@ DEF GREEN_BOX Solid {
   }
 }
 PlasticCrate {
-  translation -1.95 -0.0001962 0.76998
-  rotation 3.208519435778908e-11 1 -4.8274638655279854e-12 9.86719912449274e-08
+  translation -1.95 -0.012323907468458545 0.76998
+  rotation -2.609276067630847e-11 1 2.0315868582836698e-10 9.867199124396997e-08
   name "plastic crate(6)"
   size 0.4 0.3 0.4
   mass 100
 }
 PlasticCrate {
-  translation -1.46 -0.0001962 0.77998
-  rotation 3.208519435778908e-11 1 -4.8274638655279854e-12 9.86719912449274e-08
+  translation -1.46 -0.012323907468458545 0.77998
+  rotation 7.790032281660108e-11 1 5.6986604715749735e-11 9.867199124490674e-08
   name "plastic crate(5)"
   size 0.4 0.3 0.4
   mass 100
 }
 PlasticCrate {
-  translation -1.95 -0.000196199 1.19998
-  rotation 3.208519435778908e-11 1 -4.8274638655279854e-12 9.86719912449274e-08
+  translation -1.95 -0.012323907468395554 1.19998
+  rotation -1.6571982397371977e-10 1 1.1880065902116318e-10 9.867199124182315e-08
   name "plastic crate(4)"
   size 0.4 0.3 0.4
   mass 100
 }
 DEF GREEN_BOX Solid {
-  translation -0.999836 0.191366 -0.21797
-  rotation 0.0006245714119500316 0.9999996234180134 0.0006025565392847435 1.5708233313386641
+  translation -0.9998327161461044 0.16193631240469528 -0.1556892745109043
+  rotation 8.365872219003946e-05 0.9999999931177516 8.22539673185143e-05 1.5708257051108345
   scale 0.75 0.75 0.75
   children [
     Shape {
@@ -533,7 +338,8 @@ UR3e {
   selfCollision FALSE
   toolSlot [
     Camera {
-      translation 0 0.17 0
+      translation 0.015 0.15 0.025
+      rotation 3.390508950807168e-09 -0.707107781185531 0.70710578118615 3.14159
     }
     Robotiq3fGripper {
       translation 0 0.04 0
@@ -544,131 +350,5 @@ UR3e {
     }
   ]
 }
-Khepera3 {
-  translation 0.00429503223956763 -0.0035278295412030994 -0.12492189921976499
-  rotation -0.0004537238899983486 0.9999980626214564 -0.001915434145422997 -2.676397799540736
-  controller "CustomController"
-  wheelMaterial "wheel"
-  bodyMaterial "body"
-  turretSlot [
-    InertialUnit {
-      translation 0 0.03 0
-      rotation 0 1 0 1.5708
-      name "IMU"
-      resolution 0.1
-    }
-    Camera {
-      translation 0 0.0815 -0.09
-      children [
-        Transform {
-          translation 0 0 0.015
-          rotation 1 0 0 1.57
-          children [
-            Shape {
-              appearance PBRAppearance {
-                roughness 1
-                metalness 0
-              }
-              geometry Cylinder {
-                height 0.03
-                radius 0.01
-              }
-            }
-          ]
-        }
-      ]
-      fieldOfView 1.047
-      width 80
-      height 60
-      antiAliasing TRUE
-      noise 0.04
-    }
-    DEF BASE Khepera3_Gripper {
-    }
-  ]
-}
 Group {
-}
-Khepera3 {
-  translation 0.9622875799088324 -0.003549740442357535 -0.12537097308829467
-  rotation 0.002295036748463659 0.9999949537519411 -0.0021966513096704186 1.5668661003909354
-  name "Khepera III(1)"
-  controller "khepera3_pusher"
-  wheelMaterial "wheel"
-  bodyMaterial "body"
-  turretSlot [
-    Camera {
-      translation 0 0.0215 -0.09
-      rotation 0 0 -1 0
-      children [
-        Transform {
-          translation 0 0 0.015
-          rotation 1 0 0 1.57
-          children [
-            Shape {
-              appearance PBRAppearance {
-                roughness 1
-                metalness 0
-              }
-              geometry Cylinder {
-                height 0.03
-                radius 0.01
-              }
-            }
-          ]
-        }
-      ]
-      fieldOfView 1.047
-      width 80
-      height 60
-      antiAliasing TRUE
-      noise 0.04
-    }
-    DEF BASE Khepera3_Gripper {
-    }
-  ]
-}
-Wall {
-  translation 0.725 0 -0.16
-  size 0.06 0.2 0.04
-  appearance Roughcast {
-    textureTransform TextureTransform {
-      scale 2 1
-    }
-  }
-}
-ConveyorBelt {
-  translation 0.72 -0.01 0.07
-  rotation 0 1 0 1.570795
-  size 0.4 0.05 0.1
-  appearance CorrugatedMetal {
-    textureTransform TextureTransform {
-      scale 6 3.1
-    }
-  }
-  borderThickness 0.01
-  borderHeight 0
-  speed 0.02
-  textureAnimation 0.016
-}
-PlasticCrate {
-  translation 0.005554720000000002 -0.0001961994690954233 -0.32996500000000006
-  rotation -1.310902682042484e-12 -1 5.949978362880665e-12 -5.472202961544289e-07
-  name "plastic crate(3)"
-  size 0.2 0.07 0.2
-  mass 1
-}
-PlasticCrate {
-  translation -0.19 -0.00019619946909542677 -0.12002300000000002
-  rotation 3.208519435778908e-11 1 -4.8274638655279854e-12 9.86719912449274e-08
-  name "plastic crate(1)"
-  size 0.2 0.07 0.2
-  mass 1
-}
-PlasticCrate {
-  translation 0.0155559 -0.00019619946909542677 0.08000969999999999
-  rotation 7.2728250695211646e-12 -1 2.5946498813956086e-12 7.586025808808631e-07
-  name "plastic crate(2)"
-  size 0.2 0.07 0.2
-  mass 1
 }

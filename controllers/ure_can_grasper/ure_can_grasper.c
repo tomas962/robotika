@@ -60,14 +60,14 @@ int main(int argc, char **argv) {
   WbDeviceTag position_sensor = wb_robot_get_device("wrist_1_joint_sensor");
   wb_position_sensor_enable(position_sensor, TIME_STEP);
   
-    // init camera
-    /*
+  // init camera
+  
   WbDeviceTag camera = wb_robot_get_device("camera");
   wb_camera_enable(camera, TIME_STEP);
   int width = wb_camera_get_width(camera);
   int height = wb_camera_get_height(camera);
   printf("height: %d, width: %d \n", height, width);
-*/
+
 
   while (wb_robot_step(TIME_STEP) != -1) {
     if (counter <= 0) {
