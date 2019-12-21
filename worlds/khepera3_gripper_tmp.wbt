@@ -1,4 +1,4 @@
-#VRML_SIM R2019b utf8
+#VRML_SIM R2020a utf8
 WorldInfo {
   info [
     "The model of the Khepera III robot equipped with its gripper"
@@ -22,8 +22,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.17038550473268024 0.9329834125081738 0.317034275373488 4.141217703383779
-  position -4.721059160857116 2.822473139562588 -1.25383877345526
+  orientation -0.2092657757829914 -0.9262815701450583 -0.3133852068869053 2.202221642040233
+  position -4.1625866364523425 3.2462072615998037 -4.101985681552779
   follow "Khepera III"
 }
 DEF GREEN_BOX Solid {
@@ -261,7 +261,7 @@ DEF GREEN_BOX Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 1 0
+        baseColor 0 0 1
         roughness 0.2189099510000001
         metalness 0
       }
@@ -287,7 +287,7 @@ DEF GREEN_BOX Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 1 0
+        baseColor 1 0 0
         roughness 0.2189099510000001
         metalness 0
       }
@@ -339,7 +339,7 @@ DEF GREEN_BOX Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 1 0
+        baseColor 1 0 0
         roughness 0.2189099510000001
         metalness 0
       }
@@ -391,7 +391,7 @@ DEF GREEN_BOX Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 1 0
+        baseColor 1 0 0
         roughness 0.2189099510000001
         metalness 0
       }
@@ -443,7 +443,7 @@ DEF GREEN_BOX Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 1 0
+        baseColor 0 0 1
         roughness 0.2189099510000001
         metalness 0
       }
@@ -490,7 +490,7 @@ DEF GREEN_BOX Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 1 0
+        baseColor 0 0 1
         roughness 0.2189099510000001
         metalness 0
       }
