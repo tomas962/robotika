@@ -1,4 +1,4 @@
-#VRML_SIM R2019b utf8
+#VRML_SIM R2020a utf8
 WorldInfo {
   info [
     "The model of the Khepera III robot equipped with its gripper"
@@ -22,8 +22,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.17301992101650523 -0.9637363044097772 -0.20316604660726983 2.7042803142080762
-  position -3.9593783945831147 4.241955921131853 -8.94525449132992
+  orientation -0.08828555933455975 -0.9546780815535861 -0.28424535284529856 2.6911675670977617
+  position -2.3801345888895824 1.8390325657494042 -1.4351395126816922
 }
 TexturedBackground {
 }
@@ -272,6 +272,7 @@ PlasticCrate {
   rotation -2.609276067630847e-11 1 2.0315868582836698e-10 9.867199124396997e-08
   name "plastic crate(6)"
   size 0.4 0.3 0.4
+  color 0 0 1
   mass 100
 }
 PlasticCrate {
@@ -279,6 +280,7 @@ PlasticCrate {
   rotation 7.790032281660108e-11 1 5.6986604715749735e-11 9.867199124490674e-08
   name "plastic crate(5)"
   size 0.4 0.3 0.4
+  color 0 1 0
   mass 100
 }
 PlasticCrate {
@@ -286,6 +288,7 @@ PlasticCrate {
   rotation -1.6571982397371977e-10 1 1.1880065902116318e-10 9.867199124182315e-08
   name "plastic crate(4)"
   size 0.4 0.3 0.4
+  color 1 0 0
   mass 100
 }
 DEF GREEN_BOX Solid {
@@ -338,7 +341,7 @@ UR3e {
   selfCollision FALSE
   toolSlot [
     Camera {
-      translation 0.015 0.15 0.025
+      translation 0.015 0.1 0.025
       rotation 3.390508950807168e-09 -0.707107781185531 0.70710578118615 3.14159
     }
     Robotiq3fGripper {
