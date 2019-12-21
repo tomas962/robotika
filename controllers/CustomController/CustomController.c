@@ -179,7 +179,7 @@ void moveForwards(double speed) {
 void rotateToHeading(WbDeviceTag tag_IMU,double speed,double heading_rad){
   wb_inertial_unit_enable(tag_IMU,10);
   step(0.020);
-  const double error=1e-3;
+  const double error=0.01;
   double sauce_rad=*(wb_inertial_unit_get_roll_pitch_yaw(tag_IMU)+2);
   bool rotate_clockwise;
   bool sauceMoreThanHeading=sauce_rad>heading_rad;
@@ -189,7 +189,6 @@ void rotateToHeading(WbDeviceTag tag_IMU,double speed,double heading_rad){
     rotate_clockwise=fabs(sauce_rad-heading_rad)>fabs(sauce_rad-(heading_rad-2*M_PI));
   }
   
-  printf("rotateToHeading: sauceMoreThanHeading %d\n",sauceMoreThanHeading);
   if(rotate_clockwise){
     wb_motor_set_velocity(left_motor, speed);
     wb_motor_set_velocity(right_motor, -speed);
@@ -198,21 +197,19 @@ void rotateToHeading(WbDeviceTag tag_IMU,double speed,double heading_rad){
     wb_motor_set_velocity(right_motor, -speed);
   }
   
-  printf("rotateToHeading: rotate_clockwise %d\n",rotate_clockwise);
-  printf("rotateToHeading: sauce_rad %f\n",sauce_rad);
-  printf("rotateToHeading: abs %f\n",fabs(sauce_rad-heading_rad));
   
   while(fmin(fabs(sauce_rad-heading_rad),fabs(sauce_rad-(heading_rad-2*M_PI)))>error){
      wb_robot_step(time_step);
      sauce_rad=*(wb_inertial_unit_get_roll_pitch_yaw(tag_IMU)+2);
      
-    printf("rotateToHeading: sauce_rad %f\n",sauce_rad);
+   printf("rotateToHeading: sauce_rad %f\n",sauce_rad);
     printf("rotateToHeading: abs %f\n",fabs(sauce_rad-heading_rad));
   }
   wb_motor_set_velocity(left_motor, 0.0);
   wb_motor_set_velocity(right_motor, 0.0);
   wb_inertial_unit_disable(tag_IMU);
   step(0.0);
+  printf("finished\n");
 }
 
 void turn(double speed) {
@@ -226,14 +223,69 @@ void stop(double seconds) {
   step(seconds);
 }
 
+enum BLOB_TYPE get_image_color(WbDeviceTag camera, int width, int height){
+    const unsigned char *image = NULL;
+    image = wb_camera_get_image(camera);
+
+    enum BLOB_TYPE current_blob;
+    int red = 0;
+    int blue = 0;
+    int green = 0;
+    for (int i = width / 3; i < 2 * width / 3; i++) {
+        for (int j = height / 2; j < 3 * height / 4; j++) {
+            red += wb_camera_image_get_red(image, width, i, j);
+            blue += wb_camera_image_get_blue(image, width, i, j);
+            green += wb_camera_image_get_green(image, width, i, j);
+        }
+    }
+
+    if ((red > 3 * green) && (red > 3 * blue))
+        current_blob = RED;
+      else if ((green > 3 * red) && (green > 3 * blue))
+        current_blob = GREEN;
+      else if ((blue > 3 * red) && (blue > 3 * green))
+        current_blob = BLUE;
+      else
+        current_blob = NONE;
+
+    return current_blob;
+}
+
+void pick_up_brick() {
+  //Place grip for placement
+  moveArms(-2.8);
+  moveFingers(-0.4);
+  step(1.0);
+  
+  //move the grips into the cube space and grip
+  moveForwards(1.0);
+  step(1.0);
+  stop(0.75);
+  
+  //pick it up
+  moveFingers(0.6);
+  step(1.0);
+  moveArms(1.0);
+  step(1.0);
+}
+
+void drop_brick() {
+  moveArms(-1.3);
+  step(1.0);
+  
+  moveFingers(-0.3);
+  step(1.0);
+  
+  moveFingers(0.3);
+  moveArms(1.3);
+  step(1.0);
+}
 int main() {
   WbDeviceTag camera,IMU, left_motor, right_motor;
   int sampling_period=10;
   int width, height;
   int pause_counter = 0;
   int left_speed, right_speed;
-  int i, j;
-  int red, blue, green;
   const char *color_names[3] = {"red", "green", "blue"};
   const char *ansi_colors[3] = {ANSI_COLOR_RED, ANSI_COLOR_GREEN, ANSI_COLOR_BLUE};
   const char *filenames[3] = {"red_blob.png", "green_blob.png", "blue_blob.png"};
@@ -243,7 +295,6 @@ int main() {
   camera = wb_robot_get_device("camera");
   wb_camera_enable(camera, TIME_STEP);
   width = wb_camera_get_width(camera);
-  
   height = wb_camera_get_height(camera);
   /*
   const double* gps;
@@ -254,8 +305,29 @@ int main() {
     printf("Gps_pos: x:%d,y:%d\n",gps[0],gps[1]);
     printf("%.100s\n", image);
   }//*/
-  step(1.0);
-  printf("Moving to heading 180\n");
+  
+  /*
+  printf("Rotating\n");
+  rotateToHeading(IMU,1.0,M_PI);
+  printf("Rotating 2\n");
+  rotateToHeading(IMU,1.0,0);
+  // Move from boxes to the 
+  printf("Walking\n");
+  moveForwards(7.5);
+  step(2.7);
+  stop(1.0);
+  printf("Picking up\n");
+  pick_up_brick();
+  printf("Rotating\n");
   rotateToHeading(IMU,2.4,M_PI);
+  printf("Moving back\n");
+  moveForwards(7.5);
+  step(2.7);
+  stop(1.0);
+  printf("Dropping\n");
+  drop_brick();
+  //printf("Moving to heading 180\n");
+  //rotateToHeading(IMU,2.4,M_PI);
+  */
   return 0;
 }

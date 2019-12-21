@@ -137,9 +137,6 @@ void stop(double seconds) {
 int main() {
   initialize();
 
-    
-  stop(1.0);
-
   moveArms(-2.7);
 
   moveFingers(0.6);
@@ -147,10 +144,10 @@ int main() {
   
   while (true)
   {
-    moveForwards(3.5);
-    step(3.0);
-    moveForwards(-3.5);
-    step(3.0);
+    moveForwards(4.0);
+    step(2.0);
+    moveForwards(-4.0);
+    step(1.6);
   }
   wb_robot_cleanup();
   return 0;
